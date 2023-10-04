@@ -31,6 +31,14 @@ Practice GitOps approach to manage network settings in Kubernetes cluster deploy
 * Sample Cloud Native applications:
   * [Project pod tato Head](https://github.com/podtato-head/podtato-head)
   * [Podinfo](https://github.com/stefanprodan/podinfo)
+* Terraform:
+  * [How to GitOps Your Terraform](https://fluxcd.io/blog/2022/09/how-to-gitops-your-terraform/)
+  * [Weave GitOps Terraform Controller - GitHub](https://github.com/weaveworks/tf-controller)
+  * [Weave GitOps Terraform Controller - documentation](https://weaveworks.github.io/tf-controller/)
+  * [An AWS IAM Policy Example for TF controller](https://github.com/tf-controller/aws-iam-policies)
+  * [TF-controller demo: GitOps EKS nodegroup](https://github.com/tf-controller/eks-scaling)
+  * [Flux provider](https://registry.terraform.io/providers/fluxcd/flux/latest)
+  * [Kind provider](https://registry.terraform.io/providers/tehcyx/kind/latest)
 
 ## Solution
 
