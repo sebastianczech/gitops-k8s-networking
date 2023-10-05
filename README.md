@@ -39,6 +39,10 @@ Practice GitOps approach to manage network settings in Kubernetes cluster deploy
   * [TF-controller demo: GitOps EKS nodegroup](https://github.com/tf-controller/eks-scaling)
   * [Flux provider](https://registry.terraform.io/providers/fluxcd/flux/latest)
   * [Kind provider](https://registry.terraform.io/providers/tehcyx/kind/latest)
+* GitOps & Calico:
+  * [GitOps and Admission Control for Calico Network Policy](https://medium.com/@bikramgupta/in-part-1-of-gitops-series-we-reviewed-the-need-for-using-gitops-for-calico-policies-and-how-to-660aa6b5e4c9)
+  * [Enable GitOps for Kubernetes Security – Part 1](https://www.tigera.io/blog/enable-gitops-for-kubernetes-security-part-1/)
+  * [Decentralized Calico Network Security Policy Deployment for GitOps – Part 2](https://www.tigera.io/blog/decentralized-calico-network-security-policy-deployment-for-gitops-part-2-2/)
 
 ## Solution
 
