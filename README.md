@@ -48,7 +48,27 @@ Practice GitOps approach to manage network settings in Kubernetes cluster deploy
 
 ### Prepare local environment with Kubernetes cluster
 
-TODO:
+```
+cat > multi-node-k8s-no-cni.yaml <<EOF
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
+- role: worker
+networking:
+  disableDefaultCNI: true
+  podSubnet: 192.168.0.0/16
+EOF
+
+kind create cluster --config multi-node-k8s-no-cni.yaml --name home-lab
+
+kubectl get nodes -o wide
+
+kind get clusters
+
+kind delete cluster -n home-lab
+```
 
 ### Configure basic networking settings
 
