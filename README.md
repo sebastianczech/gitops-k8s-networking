@@ -83,6 +83,27 @@ If necessary, remove cluster:
 kind delete cluster -n home-lab
 ```
 
+### Configure basic networking settings
+
+Install Tiger operator:
+
+```
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
+
+kubectl get pods -n tigera-operator
+```
+
+Download and create custom resource to configure Calico:
+
+```
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/custom-resources.yaml -O
+
+kubectl create -f custom-resources.yaml
+
+watch kubectl get pods -n calico-system
+```
+
+
 ### Prepare Flux to GitOps approach
 
 Prepare classic personal access token and export GitHub PAT as an environment variable:
@@ -120,10 +141,6 @@ Check installation:
 ```
 flux check
 ```
-
-### Configure basic networking settings
-
-TODO:
 
 ### Deploy demo application
 
