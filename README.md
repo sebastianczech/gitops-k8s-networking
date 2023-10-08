@@ -48,6 +48,7 @@ Practice GitOps approach to manage network settings in Kubernetes cluster deploy
 
 ### Prepare local environment with Kubernetes cluster
 
+Prepare configuration file:
 ```
 cat > multi-node-k8s-no-cni.yaml <<EOF
 kind: Cluster
@@ -60,21 +61,67 @@ networking:
   disableDefaultCNI: true
   podSubnet: 192.168.0.0/16
 EOF
+```
 
+Create K8s cluster:
+
+```
 kind create cluster --config multi-node-k8s-no-cni.yaml --name home-lab
+```
 
+Check nodes and cluster:
+
+```
 kubectl get nodes -o wide
 
 kind get clusters
+```
 
+If necessary, remove cluster:
+
+```
 kind delete cluster -n home-lab
 ```
 
-### Configure basic networking settings
-
-TODO:
-
 ### Prepare Flux to GitOps approach
+
+Prepare classic personal access token and export GitHub PAT as an environment variable:
+
+```
+export GITHUB_TOKEN=***
+```
+
+Run pre-installation checks:
+
+```
+flux check --pre
+```
+
+Prepare folder for cluster:
+
+```
+mkdir -p clusters/home-lab
+```
+
+Flux bootstrap for GitHub:
+
+```
+flux bootstrap github \
+  --token-auth \
+  --owner=sebastianczech \
+  --repository=k8s-networking-gitops \
+  --branch=main \
+  --path=clusters/home-lab \
+  --personal
+```
+
+Check installation:
+
+```
+flux check
+```
+
+### Configure basic networking settings
 
 TODO:
 
