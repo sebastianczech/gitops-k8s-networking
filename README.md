@@ -144,7 +144,11 @@ flux check
 
 ### Deploy demo application
 
-TODO:
+```
+flux logs --all-namespaces
+
+flux reconcile kustomization flux-system
+```
 
 ### Prepare Flagger for progressive delivery
 
