@@ -144,10 +144,36 @@ flux check
 
 ### Deploy demo application
 
-```
-flux logs --all-namespaces
+Define application:
+- [clusters/home-lab/apps/kustomization.yaml](clusters/home-lab/apps/kustomization.yaml)
+- [apps/podinfo/](apps/podinfo)
 
+Reconcile changes in kustomization and check logs:
+
+```
 flux reconcile kustomization flux-system
+
+flux logs --all-namespaces
+```
+
+Check ``podinfo`` application:
+
+```
+# k -n podinfo exec podinfo-69d7bcd6c-qrz5v -it -- sh
+~ $ curl podinfo:9898
+{
+  "hostname": "podinfo-69d7bcd6c-qrz5v",
+  "version": "6.5.1",
+  "revision": "0bc496456d884e00aa9eb859078620866aa65dd9",
+  "color": "#34577c",
+  "logo": "https://raw.githubusercontent.com/stefanprodan/podinfo/gh-pages/cuddle_clap.gif",
+  "message": "greetings from podinfo v6.5.1",
+  "goos": "linux",
+  "goarch": "arm64",
+  "runtime": "go1.21.1",
+  "num_goroutine": "8",
+  "num_cpu": "8"
+}~ $
 ```
 
 ### Prepare Flagger for progressive delivery
