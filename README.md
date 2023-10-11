@@ -144,6 +144,8 @@ flux check
 
 ### Deploy demo application
 
+#### podinfo
+
 Define application:
 - [clusters/home-lab/apps/kustomization.yaml](clusters/home-lab/apps/kustomization.yaml)
 - [apps/podinfo/](apps/podinfo)
@@ -174,6 +176,35 @@ Check ``podinfo`` application:
   "num_goroutine": "8",
   "num_cpu": "8"
 }~ $
+```
+
+#### podtato-head
+
+Define application:
+- [clusters/home-lab/apps/kustomization.yaml](clusters/home-lab/apps/kustomization.yaml)
+- [apps/podtato-head/](apps/podtato-head/)
+
+Prepare NGINX ingress [network/ingress/](network/ingress/), which contains Helm repository and release.
+
+Defined ingress in [apps/podtato-head/app.yaml](apps/podtato-head/app.yaml).
+
+Describe ingress:
+
+```
+kubectl -n podtato describe ingress podtato-ingress
+```
+
+Verify ingress and check ``podtato-head`` application:
+
+```
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot
+tmp-shell> curl -H "Host: podtato.webapp.com" ingress-nginx-controller.ingress
+```
+
+Use in `curl` name of service and namespace `ingress`:
+
+```
+kubectl get svc -n ingress
 ```
 
 ### Prepare Flagger for progressive delivery
