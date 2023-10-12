@@ -226,6 +226,12 @@ calicoctl get networkPolicy --allow-version-mismatch
 calicoctl get globalnetworkpolicy --allow-version-mismatch
 ```
 
+Deploy [Calico Global Network Policy](network/calico/policies.yml) and check it:
+
+```
+calicoctl --allow-version-mismatch get globalNetworkPolicy deny-egress-default-ns -o yaml
+```
+
 ### Prepare Flagger for progressive delivery
 
 TODO:
