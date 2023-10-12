@@ -1,0 +1,14 @@
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: deny-egress-default-ns
+spec:
+  order: 100
+  namespaceSelector: has(projectcalico.org/name) && projectcalico.org/name in {"default"}
+  types:
+  - Egress
+  egress:
+    - action: Deny
+      destination:
+        notNets:
+          - 1.1.1.1/32

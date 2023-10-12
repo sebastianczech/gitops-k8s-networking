@@ -219,6 +219,13 @@ tmp-shell> curl podinfo.podinfo.svc.cluster.local:9898
 tmp-shell> curl podtato-head-entry.podtato:9000
 ```
 
+Check if there are network policies:
+
+```
+calicoctl get networkPolicy --allow-version-mismatch
+calicoctl get globalnetworkpolicy --allow-version-mismatch
+```
+
 ### Prepare Flagger for progressive delivery
 
 TODO:
