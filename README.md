@@ -207,10 +207,19 @@ Use in `curl` name of service and namespace `ingress`:
 kubectl get svc -n ingress
 ```
 
+### Use Kustomize to define Calico network policies
+
+Before applying network polices, check access from default namespace:
+
+```
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot
+
+tmp-shell> nslookup podinfo.podinfo
+tmp-shell> curl podinfo.podinfo.svc.cluster.local:9898
+tmp-shell> curl podtato-head-entry.podtato:9000
+```
+
 ### Prepare Flagger for progressive delivery
 
 TODO:
 
-### Use Kustomize to define Calico network policies
-
-TODO:
