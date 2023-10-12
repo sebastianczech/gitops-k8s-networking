@@ -8,6 +8,11 @@ spec:
   types:
   - Egress
   egress:
+    - action: Allow
+      protocol: UDP
+      destination:
+        ports:
+          - 53
     - action: Deny
       destination:
         notNets:
