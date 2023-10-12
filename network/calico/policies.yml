@@ -14,6 +14,11 @@ spec:
         ports:
           - 53
     - action: Deny
+      protocol: TCP
       destination:
         notNets:
           - 1.1.1.1/32
+        ports:
+          - 80
+    - action: Allow
+      protocol: TCP
