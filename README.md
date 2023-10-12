@@ -232,6 +232,17 @@ Deploy [Calico Global Network Policy](network/calico/policies.yml) and check it:
 calicoctl --allow-version-mismatch get globalNetworkPolicy deny-egress-default-ns -o yaml
 ```
 
+Traffic to 1.1.1.1 should be blocked, other allowed:
+
+```
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot
+
+tmp-shell> curl --connect-timeout 1 1.1.1.1
+curl: (28) Failed to connect to 1.1.1.1 port 80 after 1001 ms: Timeout was reached
+tmp-shell> curl --connect-timeout 1 ifconfig.me
+91.226.196.43
+```
+
 ### Prepare Flagger for progressive delivery
 
 TODO:
