@@ -245,5 +245,38 @@ tmp-shell> curl --connect-timeout 1 ifconfig.me
 
 ### Prepare Flagger for progressive delivery
 
-TODO:
+Deploy:
+- [Flagger for progressive delivery](common/flagger/)
+- [Prometheus for monitoring](common/monitoring/)
 
+Check Helm releases:
+
+```
+flux get helmreleases -n flagger-system
+```
+
+Debug issues with deploying Loadtester:
+
+```
+flux logs --all-namespaces --level=error
+```
+
+Deploy ingress for podinfo application using Kustomize and check it:
+
+```
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot
+tmp-shell> curl -H "Host: app.example.com" ingress-nginx-controller.ingress
+```
+
+Check values of metrics in Prometheus:
+
+```
+kubectl -n flagger-system port-forward services/flagger-prometheus 9090:9090
+```
+
+Generate traffic:
+
+```
+kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -n podinfo
+tmp-shell> while true; do curl -s -H 'Host: app.example.com' http://ingress-nginx-controller.ingress/version | jq .version; sleep 0.5; done
+```
