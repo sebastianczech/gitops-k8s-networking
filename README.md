@@ -290,7 +290,7 @@ kubectl -n podinfo get canary/podinfo -oyaml | awk '/status/,0'
 kubectl -n podinfo wait canary/podinfo --for=condition=promoted
 ```
 
-[Change version of podinfo image](apps/base/podinfo/deployment.yaml) and observe progressive delivery:
+[Change version of podinfo image](apps/podinfo/deployment.yaml) and observe progressive delivery:
 
 ```
 watch kubectl -n podinfo describe canary podinfo
