@@ -280,3 +280,18 @@ Generate traffic:
 kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot -n podinfo
 tmp-shell> while true; do curl -s -H 'Host: app.example.com' http://ingress-nginx-controller.ingress/version | jq .version; sleep 0.5; done
 ```
+
+Create [canary deployment](apps/podinfo/canary.yaml):
+
+```
+kubectl -n podinfo get deployments,services,pod,canaries
+kubectl -n podinfo describe canary podinfo
+kubectl -n podinfo get canary/podinfo -oyaml | awk '/status/,0'
+kubectl -n podinfo wait canary/podinfo --for=condition=promoted
+```
+
+[Change version of podinfo image](apps/base/podinfo/deployment.yaml) and observe progressive delivery:
+
+```
+watch kubectl -n podinfo describe canary podinfo
+```
