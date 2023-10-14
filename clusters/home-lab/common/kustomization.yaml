@@ -4,4 +4,4 @@ resources:
 - ../../../common/monitoring
 - ../../../common/flagger
 commonLabels:
-  env: prod
+  env: lab
