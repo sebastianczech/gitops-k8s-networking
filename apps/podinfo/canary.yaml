@@ -10,7 +10,7 @@ spec:
     kind: Deployment
     name: podinfo
   service:
-    port: 9797
+    port: 9898
   ingressRef:
     apiVersion: networking.k8s.io/v1
     kind: Ingress
@@ -46,4 +46,4 @@ spec:
       - name: load-test
         url: http://flagger-loadtester.flagger-system/
         metadata:
-          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.podinfo:9797/"
+          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.podinfo:9898/"
