@@ -2,6 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: podinfo
+  namespace: podinfo
 spec:
   provider: nginx
   targetRef:
