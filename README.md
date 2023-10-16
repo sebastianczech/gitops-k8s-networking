@@ -295,3 +295,11 @@ kubectl -n podinfo wait canary/podinfo --for=condition=promoted
 ```
 watch kubectl -n podinfo describe canary podinfo
 ```
+
+### Deploy IaC using Terraform and GitOps
+
+Install TF-controller:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/weaveworks/tf-controller/main/docs/release.yaml
+```
