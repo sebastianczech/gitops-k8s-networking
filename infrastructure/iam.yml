@@ -5,7 +5,7 @@ metadata:
   name: iam
   namespace: flux-system
 spec:
-  path: ./
+  path: ./infrastructure
   approvePlan: auto
   interval: 1m
   vars:
@@ -13,5 +13,5 @@ spec:
     value: "tf_"
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: k8s-networking-gitops
     namespace: flux-system

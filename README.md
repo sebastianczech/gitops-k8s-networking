@@ -161,7 +161,7 @@ flux logs --all-namespaces
 Check ``podinfo`` application:
 
 ```
-# k -n podinfo exec podinfo-69d7bcd6c-qrz5v -it -- sh
+# kubectl -n podinfo exec podinfo-69d7bcd6c-qrz5v -it -- sh
 ~ $ curl podinfo:9898
 {
   "hostname": "podinfo-69d7bcd6c-qrz5v",
@@ -302,4 +302,10 @@ Install TF-controller:
 
 ```
 kubectl apply -f https://raw.githubusercontent.com/weaveworks/tf-controller/main/docs/release.yaml
+```
+
+Define [infrastructure](infrastructure) and check TF controller:
+
+```
+kubectl -n flux-system get terraform
 ```
