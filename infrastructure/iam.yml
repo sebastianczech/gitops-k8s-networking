@@ -5,7 +5,6 @@ metadata:
   name: iam
   namespace: flux-system
 spec:
-  prune: true
   path: ./infrastructure
   approvePlan: auto
   interval: 1m
