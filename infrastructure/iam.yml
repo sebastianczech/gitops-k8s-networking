@@ -14,3 +14,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
+  runnerPodTemplate:
+    spec:
+      envFrom:
+      - secretRef:
+          name: aws-credentials
