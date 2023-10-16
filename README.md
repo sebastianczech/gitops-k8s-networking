@@ -307,11 +307,11 @@ kubectl apply -f https://raw.githubusercontent.com/weaveworks/tf-controller/main
 Create AWS credentials and check them:
 
 ```
-kubectl create secret generic aws-credentials \
+kubectl -n flux-system create secret generic aws-credentials \
     --from-literal=access_key=*** \
     --from-literal=secret_key=***
 
-kubectl get secret aws-credentials -o jsonpath='{.data}'
+kubectl -n flux-system get secret aws-credentials -o jsonpath='{.data}'
 ```
 
 Define [infrastructure](infrastructure) and check TF controller:
