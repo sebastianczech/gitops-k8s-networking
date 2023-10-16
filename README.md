@@ -304,8 +304,19 @@ Install TF-controller:
 kubectl apply -f https://raw.githubusercontent.com/weaveworks/tf-controller/main/docs/release.yaml
 ```
 
+Create AWS credentials and check them:
+
+```
+kubectl create secret generic aws-credentials \
+    --from-literal=access_key=*** \
+    --from-literal=secret_key=***
+
+kubectl get secret aws-credentials -o jsonpath='{.data}'
+```
+
 Define [infrastructure](infrastructure) and check TF controller:
 
 ```
 kubectl -n flux-system get terraform
+kubectl -n flux-system describe terraform
 ```

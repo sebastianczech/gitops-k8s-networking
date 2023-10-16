@@ -11,6 +11,9 @@ spec:
   vars:
   - name: prefix
     value: "tf_"
+  varsFrom:
+  - kind: Secret
+    name: aws-credentials
   sourceRef:
     kind: GitRepository
     name: flux-system
