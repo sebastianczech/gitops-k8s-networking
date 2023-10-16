@@ -308,8 +308,9 @@ Create AWS credentials and check them:
 
 ```
 kubectl -n flux-system create secret generic aws-credentials \
-    --from-literal=access_key=*** \
-    --from-literal=secret_key=***
+    --from-literal=AWS_REGION=us-east-1 \
+    --from-literal=AWS_ACCESS_KEY_ID=*** \
+    --from-literal=AWS_SECRET_ACCESS_KEY=***
 
 kubectl -n flux-system get secret aws-credentials -o jsonpath='{.data}'
 ```
