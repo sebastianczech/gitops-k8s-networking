@@ -44,7 +44,20 @@ Practice GitOps approach to manage network settings in Kubernetes cluster deploy
   * [Enable GitOps for Kubernetes Security – Part 1](https://www.tigera.io/blog/enable-gitops-for-kubernetes-security-part-1/)
   * [Decentralized Calico Network Security Policy Deployment for GitOps – Part 2](https://www.tigera.io/blog/decentralized-calico-network-security-policy-deployment-for-gitops-part-2-2/)
 
+## Problem
+
+I need to automate network configuration in Kubernetes environment using GitOps approach. Moreover in order to use GitOps for IaC in hybrid environments, extend Kubernetes cluster by delivering controller for Terraform.
+
 ## Solution
+
+In order to solve problems following actions needs to be taken:
+- prepare lab with Kubernetes cluster to test whole flow
+- use Calico as CNI plugin
+- deploy Flux as GitOps tool
+- prepare simple applications in the lab
+- define network policies using Kustomize
+- use Flagger for progressive delivery of changes
+- extend cluster by deploying TF controller in order to allow applying IaC using GitOps
 
 ### Prepare local environment with Kubernetes cluster
 
@@ -85,7 +98,7 @@ kind delete cluster -n home-lab
 
 ### Configure basic networking settings
 
-Install Tiger operator:
+Install Tigera operator:
 
 ```
 kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.1/manifests/tigera-operator.yaml
