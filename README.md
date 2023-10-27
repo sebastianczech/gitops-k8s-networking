@@ -98,6 +98,8 @@ kind delete cluster -n home-lab
 
 ### Configure basic networking settings
 
+#### [Calico](https://docs.tigera.io/calico/latest/getting-started/kubernetes/kind)
+
 Install Tigera operator:
 
 ```
@@ -116,6 +118,13 @@ kubectl create -f custom-resources.yaml
 watch kubectl get pods -n calico-system
 ```
 
+#### [Weave Net](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/#install)
+
+Install Weave Net into CNI-enabled Kubernetes:
+
+```
+kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+```
 
 ### Prepare Flux to GitOps approach
 
