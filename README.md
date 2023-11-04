@@ -118,6 +118,14 @@ kubectl create -f custom-resources.yaml
 watch kubectl get pods -n calico-system
 ```
 
+#### [Flannel](https://github.com/flannel-io/flannel#deploying-flannel-manually)
+
+Install Flannel into CNI-enabled Kubernetes:
+
+```
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+```
+
 #### [Weave Net](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/#install)
 
 Install Weave Net into CNI-enabled Kubernetes:
