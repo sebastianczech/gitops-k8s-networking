@@ -118,6 +118,13 @@ kubectl create -f custom-resources.yaml
 watch kubectl get pods -n calico-system
 ```
 
+#### [Cilium](https://github.com/cilium/cilium/tree/main/install/kubernetes/cilium)
+
+```
+helm repo add cilium https://helm.cilium.io/
+helm install cilium cilium/cilium --namespace=kube-system
+```
+
 #### [Flannel](https://github.com/flannel-io/flannel#deploying-flannel-manually)
 
 Install Flannel into CNI-enabled Kubernetes:
