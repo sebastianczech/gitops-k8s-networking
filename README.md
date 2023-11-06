@@ -358,3 +358,51 @@ Define [infrastructure](infrastructure) and check TF controller:
 kubectl -n flux-system get terraform
 kubectl -n flux-system describe terraform
 ```
+
+### Use different approaches for GitOps
+
+#### [ArgoCD](https://argo-cd.readthedocs.io/en/stable/getting_started/)
+
+Install Argo CD:
+
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+```
+
+Download Argo CD CLI:
+
+```
+brew install argocd
+```
+
+Access the Argo CD server:
+
+```
+argocd admin initial-password -n argocd
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+```
+
+Authenticate on https://localhost:8080 using generated credentials via web browser and CLI:
+
+```
+argocd login localhost:8080
+```
+
+Update password:
+
+```
+argocd account update-password
+```
+
+Create an application:
+
+```
+.........TODO.........
+```
+
+Sync (deploy) apps:
+
+```
+.........TODO.........
+```
